@@ -169,16 +169,16 @@ model 16. Battery changed across the trace, confirming the five-second poll.
 
 | Offset | Meaning | Unit/values |
 |---:|---|---|
-| 3 | sleep time | minutes |
+| 3 | sleep time | `0` off; otherwise 1-30 minutes |
 | 4 | response time | device-specific |
-| 5 | report rate | `5`=4 kHz, `6`=8 kHz, other/default=1 kHz |
+| 5 | report rate | `3`=1 kHz, `5`=4 kHz, `6`=8 kHz |
 | 6 | OS mode | device-specific enum |
 | 7 | TFT timeout | device-specific |
 | 8 | top dead zone | 0.01 mm |
 | 9 | bottom dead zone | 0.01 mm |
 | 11 | stability mode | boolean |
 | 14 | adaptive dynamic calibration | boolean |
-| 15 | wake behavior | boolean |
+| 15 | wake behavior | `0` all-key wake; `1` single-key wake |
 
 The last captured state was sleep 1 minute, response time 0, rate code 6,
 OS/TFT mode 0, 0.30/0.30 mm dead zones, stability on, adaptive calibration on,
@@ -300,8 +300,8 @@ then read back and byte-compare.
 
 - The meaning of opaque identity bytes in device info.
 - Exact enum meanings for response time and OS mode on this model.
-- Whether rate codes other than 5/6 map to multiple lower rates; the UI treats
-  every other value as its first (1 kHz) option.
+- Meanings of report-rate codes other than the UI's `3`, `5`, and `6`; unknown
+  values must be preserved.
 - Why command `0x37` input reports are explicitly ignored.
 - The macro buffer's true safe write limit (512 vs allocated/read 1024).
 - Firmware, TFT, GIF, music, light-box, and telemetry behavior on Mini60

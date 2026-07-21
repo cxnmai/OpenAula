@@ -112,7 +112,7 @@ pub enum SettingsCommand {
     Get,
     /// Change selected settings, preserving all unspecified bytes.
     Set {
-        /// Idle time before sleep, in minutes.
+        /// Sleep timeout: 0 disables sleep; otherwise 1-30 minutes.
         #[arg(long)]
         sleep_minutes: Option<u8>,
         /// Device-specific response-time value.
@@ -139,7 +139,7 @@ pub enum SettingsCommand {
         /// Enable or disable adaptive dynamic calibration.
         #[arg(long, value_parser = clap::value_parser!(bool))]
         adaptive_calibration: Option<bool>,
-        /// Enable or disable wake behavior.
+        /// Wake mode: true for single-key wake; false for all-key wake.
         #[arg(long, value_parser = clap::value_parser!(bool))]
         wake: Option<bool>,
         #[command(flatten)]

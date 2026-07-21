@@ -1,0 +1,450 @@
+{
+  "schema_version": 1,
+  "source": {
+    "surveyed_at": "2026-07-20",
+    "web_app": "https://hec.aulacn.com/",
+    "bundles": [
+      "app.c35ca532.js",
+      "chunk-keyboard.970a9da9.js"
+    ],
+    "live_device": {
+      "product": "MINI 60 HE PRO Dongle",
+      "firmware": "1.52"
+    },
+    "language_scope": "en"
+  },
+  "navigation": [
+    "Custom Keys",
+    "Lighting Settings",
+    "Macro Manager",
+    "Performance",
+    "Advanced Keys",
+    "Settings"
+  ],
+  "supported_devices": [
+    {
+      "transport": "wired",
+      "product": "MINI 60 HE PRO",
+      "vendor_id": "0x0c45",
+      "product_id": "0x80a2",
+      "usage_page": "0xff68",
+      "usage": "0x61",
+      "report_len": 64,
+      "capabilities": {
+        "battery": false,
+        "sleep": false,
+        "wake": true,
+        "stability": true,
+        "adaptive_calibration": true,
+        "report_rate": true,
+        "firmware_metadata": true
+      }
+    },
+    {
+      "transport": "dongle",
+      "product": "MINI 60 HE PRO Dongle",
+      "vendor_id": "0x0c45",
+      "product_id": "0xfefe",
+      "usage_page": "0xff60",
+      "usage": "0x61",
+      "report_len": 32,
+      "capabilities": {
+        "battery": true,
+        "sleep": true,
+        "wake": true,
+        "stability": true,
+        "adaptive_calibration": true,
+        "report_rate": false,
+        "firmware_metadata": true
+      }
+    }
+  ],
+  "profiles": {
+    "storage": "host",
+    "device_has_named_slots": false,
+    "actions": [
+      "create",
+      "rename",
+      "copy",
+      "import",
+      "export",
+      "delete",
+      "activate"
+    ],
+    "activate_writes_complete_configuration": true
+  },
+  "keyboard": {
+    "slot_count": 128,
+    "physical_key_count": 61,
+    "layers": [
+      "normal",
+      "fn"
+    ],
+    "rows": [
+      [
+        { "slot": 0, "label": "Esc", "width": 1.0 },
+        { "slot": 17, "label": "1 !", "width": 1.0 },
+        { "slot": 18, "label": "2 @", "width": 1.0 },
+        { "slot": 19, "label": "3 #", "width": 1.0 },
+        { "slot": 20, "label": "4 $", "width": 1.0 },
+        { "slot": 21, "label": "5 %", "width": 1.0 },
+        { "slot": 22, "label": "6 ^", "width": 1.0 },
+        { "slot": 23, "label": "7 &", "width": 1.0 },
+        { "slot": 24, "label": "8 *", "width": 1.0 },
+        { "slot": 25, "label": "9 (", "width": 1.0 },
+        { "slot": 26, "label": "0 )", "width": 1.0 },
+        { "slot": 27, "label": "- _", "width": 1.0 },
+        { "slot": 28, "label": "= +", "width": 1.0 },
+        { "slot": 92, "label": "Backspace", "width": 2.0 }
+      ],
+      [
+        { "slot": 32, "label": "Tab", "width": 1.5 },
+        { "slot": 33, "label": "Q", "width": 1.0 },
+        { "slot": 34, "label": "W", "width": 1.0 },
+        { "slot": 35, "label": "E", "width": 1.0 },
+        { "slot": 36, "label": "R", "width": 1.0 },
+        { "slot": 37, "label": "T", "width": 1.0 },
+        { "slot": 38, "label": "Y", "width": 1.0 },
+        { "slot": 39, "label": "U", "width": 1.0 },
+        { "slot": 40, "label": "I", "width": 1.0 },
+        { "slot": 41, "label": "O", "width": 1.0 },
+        { "slot": 42, "label": "P", "width": 1.0 },
+        { "slot": 43, "label": "[ {", "width": 1.0 },
+        { "slot": 44, "label": "] }", "width": 1.0 },
+        { "slot": 60, "label": "\\ |", "width": 1.5 }
+      ],
+      [
+        { "slot": 48, "label": "Caps", "width": 1.75 },
+        { "slot": 49, "label": "A", "width": 1.0 },
+        { "slot": 50, "label": "S", "width": 1.0 },
+        { "slot": 51, "label": "D", "width": 1.0 },
+        { "slot": 52, "label": "F", "width": 1.0 },
+        { "slot": 53, "label": "G", "width": 1.0 },
+        { "slot": 54, "label": "H", "width": 1.0 },
+        { "slot": 55, "label": "J", "width": 1.0 },
+        { "slot": 56, "label": "K", "width": 1.0 },
+        { "slot": 57, "label": "L", "width": 1.0 },
+        { "slot": 58, "label": "; :", "width": 1.0 },
+        { "slot": 59, "label": "' \"", "width": 1.0 },
+        { "slot": 76, "label": "Enter", "width": 2.25 }
+      ],
+      [
+        { "slot": 64, "label": "L-Shift", "width": 2.25 },
+        { "slot": 65, "label": "Z", "width": 1.0 },
+        { "slot": 66, "label": "X", "width": 1.0 },
+        { "slot": 67, "label": "C", "width": 1.0 },
+        { "slot": 68, "label": "V", "width": 1.0 },
+        { "slot": 69, "label": "B", "width": 1.0 },
+        { "slot": 70, "label": "N", "width": 1.0 },
+        { "slot": 71, "label": "M", "width": 1.0 },
+        { "slot": 72, "label": ", <", "width": 1.0 },
+        { "slot": 73, "label": ". >", "width": 1.0 },
+        { "slot": 74, "label": "/ ?", "width": 1.0 },
+        { "slot": 75, "label": "R-Shift", "width": 2.75 }
+      ],
+      [
+        { "slot": 80, "label": "L-Ctrl", "width": 1.25 },
+        { "slot": 81, "label": "L-Win", "width": 1.25 },
+        { "slot": 82, "label": "L-Alt", "width": 1.25 },
+        { "slot": 83, "label": "Spacebar", "width": 6.25 },
+        { "slot": 84, "label": "R-Alt", "width": 1.25 },
+        { "slot": 86, "label": "Super", "width": 1.25 },
+        { "slot": 87, "label": "R-Ctrl", "width": 1.25 },
+        { "slot": 85, "label": "Fn", "width": 1.25 }
+      ]
+    ]
+  },
+  "settings": {
+    "pages": [
+      "Interface Settings",
+      "Device settings",
+      "Update"
+    ],
+    "theme": {
+      "storage": "host",
+      "values": [
+        "light",
+        "dark",
+        "system"
+      ],
+      "default": "system"
+    },
+    "device_controls": [
+      {
+        "id": "sleep",
+        "label": "Sleep Mode",
+        "settings_offset": 3,
+        "off_value": 0,
+        "minimum_on_value": 1,
+        "maximum": 30,
+        "step": 1,
+        "unit": "minutes",
+        "transports": ["dongle"]
+      },
+      {
+        "id": "wake",
+        "label": "All Key & Single Key Wakeup",
+        "settings_offset": 15,
+        "false_label": "All-key wakeup",
+        "true_label": "Single-key wakeup",
+        "transports": ["wired", "dongle"]
+      },
+      {
+        "id": "stability",
+        "label": "Stability Mode",
+        "settings_offset": 11,
+        "type": "boolean",
+        "transports": ["wired", "dongle"]
+      },
+      {
+        "id": "adaptive_calibration",
+        "label": "Adaptive Dynamic Calibration (Beta)",
+        "settings_offset": 14,
+        "type": "boolean",
+        "transports": ["wired", "dongle"]
+      },
+      {
+        "id": "report_rate",
+        "label": "Report Rate",
+        "settings_offset": 5,
+        "values": [
+          { "label": "1 kHz", "hertz": 1000, "raw": 3 },
+          { "label": "4 kHz", "hertz": 4000, "raw": 5 },
+          { "label": "8 kHz", "hertz": 8000, "raw": 6 }
+        ],
+        "transports": ["wired"]
+      },
+      {
+        "id": "reset_all",
+        "label": "Reset all settings",
+        "command": "0x0f",
+        "subcode": "0xff",
+        "hazardous": true,
+        "transports": ["wired", "dongle"]
+      }
+    ],
+    "update": {
+      "metadata_path": "/update.json",
+      "display_only": true,
+      "surveyed_current": "1.52",
+      "surveyed_available": "1.55",
+      "surveyed_package": "Windows-only",
+      "flashing_supported": false
+    }
+  },
+  "lighting": {
+    "off_effect": "0x00",
+    "brightness": { "minimum": 1, "maximum": 5, "step": 1 },
+    "speed": { "minimum": 1, "maximum": 5, "step": 1 },
+    "direction_values": [0, 1],
+    "palette": [
+      "#000000",
+      "#0000FF",
+      "#00FFFF",
+      "#00FF00",
+      "#FFFF00",
+      "#FF0000",
+      "#FF00FF",
+      "#FFFFFF"
+    ],
+    "effects": [
+      { "value": "0x01", "label": "Static Bright", "speed": false, "direction": false, "color": true },
+      { "value": "0x02", "label": "Single Point On", "speed": true, "direction": false, "color": true },
+      { "value": "0x03", "label": "Single Point Off", "speed": true, "direction": false, "color": true },
+      { "value": "0x04", "label": "Starry Sky", "speed": true, "direction": false, "color": true },
+      { "value": "0x05", "label": "Snowfall", "speed": true, "direction": false, "color": true },
+      { "value": "0x06", "label": "Floral Competition", "speed": true, "direction": false, "color": false },
+      { "value": "0x07", "label": "Dynamic Breathing", "speed": true, "direction": false, "color": true },
+      { "value": "0x08", "label": "Spectrum Cycle", "speed": true, "direction": false, "color": false },
+      { "value": "0x09", "label": "Color Fountain", "speed": true, "direction": false, "color": true },
+      { "value": "0x0a", "label": "Colorful Interchange", "speed": true, "direction": true, "color": true },
+      { "value": "0x0b", "label": "Flowing with the Waves", "speed": true, "direction": true, "color": true },
+      { "value": "0x0c", "label": "Turning Peaks", "speed": true, "direction": true, "color": true },
+      { "value": "0x0d", "label": "One Touch to Fire", "speed": true, "direction": false, "color": true },
+      { "value": "0x0e", "label": "Two Birds with One Stone", "speed": true, "direction": false, "color": true },
+      { "value": "0x0f", "label": "Ripples Spread", "speed": true, "direction": false, "color": true },
+      { "value": "0x10", "label": "Endless Flow", "speed": true, "direction": true, "color": true },
+      { "value": "0x11", "label": "Layered Mountains", "speed": true, "direction": false, "color": true },
+      { "value": "0x12", "label": "Gentle Rain and Wind", "speed": true, "direction": true, "color": true },
+      { "value": "0x13", "label": "Back and Forth", "speed": true, "direction": false, "color": true },
+      { "value": "0x80", "label": "Custom", "speed": false, "direction": false, "color": true, "per_key": true }
+    ]
+  },
+  "performance": {
+    "actuation": {
+      "minimum_mm": 0.1,
+      "maximum_mm": 3.4,
+      "step_mm": 0.01,
+      "default_mm": 1.2
+    },
+    "sensitivity": {
+      "minimum_mm": 0.01,
+      "maximum_mm": 3.4,
+      "step_mm": 0.01,
+      "warn_below_mm": 0.04
+    },
+    "dead_zones": {
+      "minimum_mm": 0.0,
+      "maximum_mm": 0.5,
+      "step_mm": 0.01
+    },
+    "selection_helpers": {
+      "all": "all physical slots",
+      "wasd": [34, 49, 50, 51],
+      "number_row": [17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+    },
+    "switches": [
+      { "value": 1, "translation_key": "axis_6", "observed_label": "Graywood/Yingyi/Yongchun Switch", "wired_travel_mm": 3.3, "dongle_travel_mm": 3.4 },
+      { "value": 4, "translation_key": "axis_7", "observed_label": "Black Emperor Switch", "wired_travel_mm": 3.4, "dongle_travel_mm": 3.4 },
+      { "value": 2, "translation_key": "jade", "observed_label": "Magnetic Jade Pro", "wired_travel_mm": 3.3, "dongle_travel_mm": 3.4 },
+      { "value": 3, "translation_key": "king", "observed_label": "Magneto Shaft", "wired_travel_mm": 3.3, "dongle_travel_mm": 3.4 },
+      { "value": 5, "translation_key": "axis_10", "observed_label": "Spirit Cloud Switch", "wired_travel_mm": 3.4, "dongle_travel_mm": 3.4 },
+      { "value": 6, "translation_key": "axis_11", "observed_label": "Smoke Cloud Switch", "wired_travel_mm": 3.4, "dongle_travel_mm": 3.4, "default": true },
+      { "value": 7, "translation_key": "axis_12", "observed_label": "Wind Cloud Switch", "wired_travel_mm": 3.4, "dongle_travel_mm": 3.4 },
+      { "value": 8, "translation_key": "axis_35", "observed_label": "Ice Cloud Switch", "wired_travel_mm": 3.4, "dongle_travel_mm": 3.4 }
+    ],
+    "presets": [
+      {
+        "id": "custom",
+        "label": "Custom",
+        "behavior": "restore staged profile values"
+      },
+      {
+        "id": "office",
+        "label": "Office Mode",
+        "default": { "actuation_mm": 2.0, "press_mm": 0.0, "release_mm": 0.0, "full_travel": false },
+        "overrides": [
+          { "slots": [83], "actuation_mm": 3.0, "press_mm": 0.0, "release_mm": 0.0, "full_travel": false }
+        ]
+      },
+      {
+        "id": "beginner",
+        "label": "Beginner Mode",
+        "default": { "actuation_mm": 1.5, "press_mm": 0.0, "release_mm": 0.0, "full_travel": false },
+        "overrides": [
+          { "slots": [83], "actuation_mm": 3.0, "press_mm": 0.0, "release_mm": 0.0, "full_travel": false },
+          { "slots": [34, 49, 50, 51, 80], "actuation_mm": 1.0, "press_mm": 0.56, "release_mm": 0.56, "full_travel": false }
+        ]
+      },
+      {
+        "id": "game",
+        "label": "Game Mode",
+        "default": { "actuation_mm": 1.5, "press_mm": 0.0, "release_mm": 0.0, "full_travel": false },
+        "overrides": [
+          { "slots": [83], "actuation_mm": 3.0, "press_mm": 0.0, "release_mm": 0.0, "full_travel": false },
+          { "slots": [34, 49, 50, 51, 80], "actuation_mm": 0.5, "press_mm": 0.16, "release_mm": 0.16, "full_travel": true }
+        ]
+      }
+    ],
+    "calibration": {
+      "start_or_clear_command": "0x64",
+      "stop_or_save_command": "0x65",
+      "wireless_live_status": false,
+      "hazardous": true
+    }
+  },
+  "advanced_keys": {
+    "profile_limit": 40,
+    "test_commands": {
+      "start": "0x66",
+      "stop": "0x67"
+    },
+    "features": [
+      {
+        "id": 1,
+        "name": "RS",
+        "assignment_type": 12,
+        "physical_keys": 2,
+        "target_catalog": null,
+        "trigger_distance": { "minimum_mm": 0.1, "maximum_mm": 3.4, "step_mm": 0.1, "default_mm": 1.2 }
+      },
+      {
+        "id": 2,
+        "name": "SOCD",
+        "assignment_type": 11,
+        "physical_keys": 2,
+        "target_catalog": null,
+        "trigger_distance": { "minimum_mm": 0.1, "maximum_mm": 3.4, "step_mm": 0.1, "default_mm": 1.2 },
+        "modes": [
+          { "value": 3, "label": "Last Input Priority" },
+          { "value": 1, "label": "Absolute Key 1 Priority" },
+          { "value": 2, "label": "Absolute Key 2 Priority" },
+          { "value": 4, "label": "Anti-Ghosting Mode" }
+        ],
+        "supports_rapid_trigger": true
+      },
+      {
+        "id": 3,
+        "name": "Dynamic Key Travel (DKS)",
+        "assignment_type": 8,
+        "physical_keys": 1,
+        "target_catalog": ["basic", "extended"],
+        "action_slots": 4,
+        "phases": [
+          "Key Start",
+          "Key Bottom",
+          "Lift When Pressed to Bottom",
+          "Completed Lift"
+        ],
+        "default_points_mm": [1.6, 3.0, 3.0, 1.6],
+        "step_mm": 0.1,
+        "outer_maximum_for_3_4mm_switch": 3.3,
+        "inner_maximum_for_3_4mm_switch": 3.4,
+        "outer_points_linked": true,
+        "inner_points_linked": true
+      },
+      {
+        "id": 4,
+        "name": "Dual Effect Click (MT)",
+        "assignment_type": 9,
+        "physical_keys": 1,
+        "target_catalog": ["basic", "extended"],
+        "targets": ["hold", "tap"],
+        "hold_time_ms": { "minimum": 10, "maximum": 1000, "step": 10, "default": 400 }
+      },
+      {
+        "id": 5,
+        "name": "Toggle Switch (TGL)",
+        "assignment_type": 10,
+        "physical_keys": 1,
+        "target_catalog": ["basic", "extended"],
+        "targets": ["toggle"]
+      }
+    ]
+  },
+  "macros": {
+    "buffer_bytes": 1024,
+    "offset_table_bytes": 400,
+    "web_item_limit": 512,
+    "default_interval_ms": 10,
+    "maximum_delay_ms": 9999,
+    "record_timing_modes": [
+      "recorded",
+      "none",
+      "default"
+    ],
+    "playback_modes": [
+      { "value": 0, "label": "Routine" },
+      { "value": 2, "label": "Press Again to End" },
+      { "value": 1, "label": "Repeat Playback" }
+    ],
+    "mouse_actions": [
+      "left",
+      "middle",
+      "right",
+      "back",
+      "forward",
+      "wheel_up",
+      "wheel_down"
+    ]
+  },
+  "out_of_scope": [
+    "language picker",
+    "vendor accounts",
+    "community sharing",
+    "music-reactive plugin",
+    "screen and GIF editors",
+    "host telemetry",
+    "firmware flashing"
+  ]
+}

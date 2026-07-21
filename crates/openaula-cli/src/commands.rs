@@ -279,6 +279,7 @@ fn settings(runtime: &Runtime, command: SettingsCommand) -> Result<()> {
         } => {
             let before = raw.clone();
             if let Some(value) = sleep_minutes {
+                ensure!(value <= 30, "sleep timeout must be 0-30 minutes");
                 raw[3] = value;
             }
             if let Some(value) = response_time {
@@ -902,7 +903,11 @@ fn compare_dumps(
 
 fn print_settings(settings: &KeyboardSettings) {
     println!("Settings:");
-    println!("  sleep: {} minute(s)", settings.sleep_minutes);
+    if settings.sleep_minutes == 0 {
+        println!("  sleep: off");
+    } else {
+        println!("  sleep: {} minute(s)", settings.sleep_minutes);
+    }
     println!("  response time: {}", settings.response_time);
     println!("  report rate: {}", report_rate_name(settings.report_rate));
     println!("  OS mode: {}", settings.os_mode);
@@ -917,7 +922,14 @@ fn print_settings(settings: &KeyboardSettings) {
         "  adaptive calibration: {}",
         on_off(settings.adaptive_calibration)
     );
-    println!("  wake: {}", on_off(settings.wake));
+    println!(
+        "  wake mode: {}",
+        if settings.wake {
+            "single-key"
+        } else {
+            "all-key"
+        }
+    );
 }
 
 fn print_lighting(lighting: &LightingConfig) {

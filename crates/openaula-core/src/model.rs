@@ -71,6 +71,7 @@ impl ReportRate {
     #[must_use]
     pub const fn decode(value: u8) -> Self {
         match value {
+            3 => Self::Hz1000,
             5 => Self::Hz4000,
             6 => Self::Hz8000,
             value => Self::Unknown(value),
@@ -80,7 +81,7 @@ impl ReportRate {
     #[must_use]
     pub const fn encode(self) -> u8 {
         match self {
-            Self::Hz1000 => 0,
+            Self::Hz1000 => 3,
             Self::Hz4000 => 5,
             Self::Hz8000 => 6,
             Self::Unknown(value) => value,
@@ -446,6 +447,19 @@ mod tests {
         assert!(settings.stability);
         assert!(settings.adaptive_calibration);
         assert_eq!(settings.encode(), bytes);
+    }
+
+    #[test]
+    fn report_rates_use_vendor_ui_codes() {
+        for (raw, rate) in [
+            (3, ReportRate::Hz1000),
+            (5, ReportRate::Hz4000),
+            (6, ReportRate::Hz8000),
+        ] {
+            assert_eq!(ReportRate::decode(raw), rate);
+            assert_eq!(rate.encode(), raw);
+        }
+        assert_eq!(ReportRate::decode(0), ReportRate::Unknown(0));
     }
 
     #[test]

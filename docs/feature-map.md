@@ -92,8 +92,10 @@ The common configurator has four additional effect records (`0x17`, `0x18`,
 - Choose real recorded delays, no delays, or a default delay.
 - Edit delays up to 9999 ms.
 - Save macros into the keyboard's shared macro buffer.
-- Bind a macro to a key as Routine, Press Again to End, Repeat Playback, or
-  Hold mode. The key record also contains a repeat-count byte.
+- Bind a macro to a key as Routine (`0`), Press Again to End (`2`), or Repeat
+  Playback (`1`). The key record also contains a repeat-count byte. The shared
+  translation catalog contains a Hold label, but the Mini60 mode list does not
+  expose it.
 
 Supported mouse actions are left, middle, right, wheel up/down, forward, and
 back. Keyboard recording stores USB HID keycodes and key-down/key-up events.
@@ -103,9 +105,11 @@ back. Keyboard recording stores USB HID keycodes and key-down/key-up events.
 Preset tabs:
 
 - Custom
-- Office Mode
-- Beginner Mode
-- Game Mode
+- Office Mode: all keys at 2.0 mm except Space at 3.0 mm; RT off.
+- Beginner Mode: 1.5 mm base, Space at 3.0 mm, and WASD/Left Ctrl at 1.0 mm
+  with 0.56 mm press/release sensitivity.
+- Game Mode: 1.5 mm base, Space at 3.0 mm, and WASD/Left Ctrl at 0.5 mm with
+  0.16 mm press/release sensitivity and full-distance RT.
 
 Normal actuation:
 
@@ -163,16 +167,24 @@ be used on different physical keys/layers.
 - **DKS / Dynamic Keystroke:** attach up to four key actions to four pressure
   points and four travel phases: Key Start, Key Bottom, Lift When Pressed to
   Bottom, and Completed Lift. Each key/phase can be a one-shot point or a held
-  path.
+  path. Default points are 1.6/3.0/3.0/1.6 mm; outer and inner pairs move
+  together in 0.1 mm steps.
 - **MT / Mod-Tap:** one action on hold and another on tap. Hold time is
-  adjustable in 10 ms units and defaults to 400 ms.
+  adjustable from 10-1000 ms in 10 ms units and defaults to 400 ms.
 - **TGL / Toggle:** tapping locks/unlocks continuous activation; holding acts
   like a normal key press.
+
+The DKS, MT, and TGL target pickers expose Basic and Extended keyboard actions
+only. RS and SOCD select physical key pairs.
 
 The common app also implements a three-key Combo/CB editor, but that feature is
 not enabled by the Mini60 device definition.
 
 ## Settings
+
+Interface settings are host-side and offer Light, Dark, and system-synchronized
+themes. OpenAula's native UI is intentionally English-only, so the vendor
+language picker is not part of the port.
 
 Wired Mini60:
 
@@ -185,7 +197,7 @@ Wired Mini60:
 
 Mini60 dongle:
 
-- Sleep/idle time.
+- Sleep/idle mode: byte 3 is `0` for off or 1-30 minutes.
 - Wake behavior.
 - Stability mode.
 - Adaptive Dynamic Calibration (Beta).
@@ -197,6 +209,11 @@ timeout, screen/GIF upload, telemetry, music-reactive lighting, side-light
 effects, and community pages. The Mini60 definition hides those pages or
 controls (`listBtnHideIds` 6, 7, and 8), but their protocol commands are
 documented because the core parser may eventually support related devices.
+
+Wake byte 15 is `1` for the lower-power single-key wake mode and `0` for
+all-key wake. The wired report-rate choices are 1 kHz (`3`), 4 kHz (`5`), and
+8 kHz (`6`). Firmware metadata/update download belongs on the Update page, but
+native firmware flashing remains out of scope.
 
 ## Destructive operations
 

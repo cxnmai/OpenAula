@@ -69,6 +69,12 @@ After writing, `aula` rereads the section and fails if verification differs.
 Boolean setter values are explicit: use `--stability true` or
 `--stability false`, for example.
 
+The Settings-page device controls are available directly: use
+`--sleep-minutes 0` to disable sleep or `1..30` for the dongle timeout;
+`--wake true` selects lower-power single-key wake and `--wake false` selects
+all-key wake. Stability, adaptive calibration, dead zones, and the wired
+1/4/8 kHz report-rate choices map to their corresponding setter options.
+
 ## Key assignments
 
 The Mini60 uses 128 sparse firmware slots. `aula keymap get` prints the 61

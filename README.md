@@ -77,6 +77,8 @@ and safety behavior.
 ## Reverse-engineering notes
 
 - [Complete feature map](docs/feature-map.md)
+- [Native desktop UI specification](docs/native-gui-spec.md)
+- [Machine-readable Mini60 GUI catalog](docs/mini60-gui.json)
 - [HID protocol and state formats](docs/protocol.md)
 - [Mini60 key slots and action catalog](docs/mini60-layout.md)
 
