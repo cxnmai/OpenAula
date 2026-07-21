@@ -6,6 +6,26 @@ members = [
 ]
 resolver = "3"
 
+[package]
+name = "openaula"
+description = "Local configurator for supported AULA keyboards"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
+
+[[bin]]
+name = "aula"
+path = "src/main.rs"
+
+[dependencies]
+openaula-cli = { path = "crates/openaula-cli" }
+
+[lints]
+workspace = true
+
 [workspace.package]
 version = "0.1.0"
 edition = "2024"
@@ -15,4 +35,3 @@ rust-version = "1.85"
 
 [workspace.lints.rust]
 unsafe_code = "forbid"
-

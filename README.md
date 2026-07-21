@@ -34,12 +34,11 @@ Firmware flashing and other unverified screen/music commands are not exposed.
 Rust 1.85 or newer is required.
 
 ```sh
-cargo install --path crates/openaula-cli
+cargo install --path .
 aula --version
 ```
 
-For development, replace `aula` in the examples with
-`cargo run -p openaula-cli --`.
+For development, replace `aula` in the examples with `cargo run --`.
 
 On Linux, the user running `aula` must be able to open the matching
 `/dev/hidraw*` node. `aula devices` can enumerate endpoints without opening
