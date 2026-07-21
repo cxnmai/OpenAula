@@ -1,0 +1,18 @@
+[package]
+name = "openaula-cli"
+description = "Command-line frontend for OpenAula"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "aula"
+path = "src/main.rs"
+
+[dependencies]
+openaula-core = { path = "../openaula-core" }
+
+[lints]
+workspace = true
