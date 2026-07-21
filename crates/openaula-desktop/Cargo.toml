@@ -1,6 +1,6 @@
 [package]
 name = "openaula-desktop"
-description = "Future graphical frontend for OpenAula"
+description = "Native GPUI frontend for OpenAula"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -9,8 +9,10 @@ rust-version.workspace = true
 publish = false
 
 [dependencies]
+anyhow = "1.0"
+gpui = "0.2.2"
+gpui-component = "0.5.1"
 openaula-core = { path = "../openaula-core" }
 
 [lints]
 workspace = true
-

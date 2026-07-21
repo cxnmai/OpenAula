@@ -9,7 +9,7 @@ The repository is a Rust workspace:
 - `openaula-core` owns discovery, transport, protocol codecs, validation, and
   lossless configuration backups.
 - `openaula-cli` provides the `aula` command.
-- `openaula-desktop` is reserved for the later graphical frontend.
+- `openaula-desktop` provides the native GPUI configuration interface.
 
 ## Status
 
@@ -29,6 +29,11 @@ Writes are deliberately conservative:
 
 Firmware flashing and other unverified screen/music commands are not exposed.
 
+The desktop frontend mirrors the mapped Mini60 web configurator across Custom
+Keys, Lighting, Macro, Performance, Advanced Keys, and Settings. Its current
+preview session is intentionally disconnected from HID writes while the shared
+editor-session layer is being integrated with `openaula-core`.
+
 ## Install
 
 Rust 1.85 or newer is required.
@@ -39,6 +44,19 @@ aula --version
 ```
 
 For development, replace `aula` in the examples with `cargo run --`.
+
+Run the native frontend directly from the workspace:
+
+```sh
+cargo run -p openaula-desktop
+```
+
+To install its `openaula-desktop` binary separately:
+
+```sh
+cargo install --path crates/openaula-desktop
+openaula-desktop
+```
 
 On Linux, the user running `aula` must be able to open the matching
 `/dev/hidraw*` node. `aula devices` can enumerate endpoints without opening
