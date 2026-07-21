@@ -2,7 +2,7 @@
 
 The firmware uses 128 sparse key slots. Each normal/Fn assignment occupies
 four bytes at `4 * slot`; each per-key lighting record also starts with the
-slot. These are the 60 physical slots exposed by the official layout.
+slot. These are the 61 physical keys exposed by the official 60% layout.
 
 | Row | Slot → physical key |
 |---|---|

@@ -4,8 +4,10 @@
 //! decoded configuration records, and validation shared by the `aula` CLI and
 //! the future desktop frontend.
 
+pub mod dump;
 pub mod model;
 pub mod protocol;
+pub mod transport;
 
 /// USB vendor ID used by the currently supported Mini60 HE Pro.
 pub const AULA_VENDOR_ID: u16 = 0x0c45;
@@ -43,6 +45,13 @@ impl DeviceId {
                 MINI60_HE_PRO_PRODUCT_ID | MINI60_HE_PRO_DONGLE_PRODUCT_ID
             )
     }
+
+    /// Whether two endpoints represent the same supported keyboard family.
+    /// A wired Mini60 and its wireless dongle are intentionally compatible.
+    #[must_use]
+    pub const fn is_compatible_with(self, other: Self) -> bool {
+        self.is_supported() && other.is_supported()
+    }
 }
 
 #[cfg(test)]
@@ -53,6 +62,7 @@ mod tests {
     fn recognizes_known_devices() {
         assert!(DeviceId::MINI60_HE_PRO.is_supported());
         assert!(DeviceId::MINI60_HE_PRO_DONGLE.is_supported());
+        assert!(DeviceId::MINI60_HE_PRO.is_compatible_with(DeviceId::MINI60_HE_PRO_DONGLE));
     }
 
     #[test]

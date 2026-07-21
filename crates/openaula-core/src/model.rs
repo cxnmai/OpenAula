@@ -1,11 +1,15 @@
 //! Decoded configuration records used by both frontends.
 
 use core::fmt;
+use serde::{Deserialize, Serialize};
 
 pub const DEVICE_INFO_LEN: usize = 32;
 pub const KEYBOARD_SETTINGS_LEN: usize = 32;
 pub const KEYMAP_LEN: usize = 512;
+/// Semantic lighting record length.
 pub const LIGHTING_LEN: usize = 16;
+/// Largest lighting response observed from the dongle, including padding.
+pub const LIGHTING_MAX_LEN: usize = 24;
 pub const PER_KEY_LIGHTING_LEN: usize = 512;
 pub const MACRO_BUFFER_LEN: usize = 1024;
 pub const FN_KEYMAP_LEN: usize = 512;
@@ -13,7 +17,7 @@ pub const RAPID_TRIGGER_LEN: usize = 1024;
 pub const DKS_BUFFER_LEN: usize = 1024;
 pub const KEY_SLOT_COUNT: usize = 128;
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct FirmwareVersion {
     pub major: u8,
     pub minor: u8,
@@ -25,7 +29,7 @@ impl fmt::Display for FirmwareVersion {
     }
 }
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct DeviceInfo {
     pub firmware: FirmwareVersion,
     pub battery_percent: u8,
@@ -55,7 +59,7 @@ impl DeviceInfo {
     }
 }
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub enum ReportRate {
     Hz1000,
     Hz4000,
@@ -84,7 +88,7 @@ impl ReportRate {
     }
 }
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct KeyboardSettings {
     pub sleep_minutes: u8,
     pub response_time: u8,
@@ -134,7 +138,7 @@ impl KeyboardSettings {
     }
 }
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct LightingConfig {
     pub effect: u8,
     pub primary: [u8; 3],
@@ -178,10 +182,21 @@ impl LightingConfig {
         bytes[15] = 0x55;
         bytes
     }
+
+    /// Encode the writer form while retaining the reserved byte and any
+    /// transport padding returned by the device.
+    pub fn encode_preserving(self, original: &[u8]) -> Result<Vec<u8>, ModelError> {
+        require_len(original, LIGHTING_LEN)?;
+        let mut bytes = original.to_vec();
+        let reserved = bytes[13];
+        bytes[..LIGHTING_LEN].copy_from_slice(&self.encode());
+        bytes[13] = reserved;
+        Ok(bytes)
+    }
 }
 
 /// One four-byte entry in the normal or Fn keymap.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub enum KeyAssignment {
     Empty,
     Mouse { kind: u8, code: u8 },
@@ -278,7 +293,7 @@ impl KeyAssignment {
     }
 }
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct RapidTriggerFlags(pub u8);
 
 impl RapidTriggerFlags {
@@ -304,7 +319,7 @@ impl RapidTriggerFlags {
 
 /// One eight-byte rapid-trigger record. Distance values are hundredths of a
 /// millimeter when nonzero; an all-zero record selects firmware defaults.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct RapidTriggerConfig {
     pub switch_type: u8,
     pub flags: RapidTriggerFlags,
@@ -335,7 +350,7 @@ impl RapidTriggerConfig {
     }
 }
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub enum SocdMode {
     Key1Priority = 1,
     Key2Priority = 2,
@@ -343,7 +358,7 @@ pub enum SocdMode {
     Neutral = 4,
 }
 
-#[derive(Clone, Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct DksRecord {
     pub trigger_points: [u8; 4],
     pub keycodes: [u8; 4],
@@ -448,6 +463,16 @@ mod tests {
         let bytes = config.encode();
         assert_eq!(&bytes[14..], &[0xaa, 0x55]);
         assert_eq!(LightingConfig::decode(&bytes).unwrap(), config);
+
+        let mut returned = vec![0; LIGHTING_MAX_LEN];
+        returned[13] = 0x7e;
+        returned[20] = 0x99;
+        let preserving = config.encode_preserving(&returned).unwrap();
+        assert_eq!(preserving.len(), LIGHTING_MAX_LEN);
+        assert_eq!(preserving[13], 0x7e);
+        assert_eq!(preserving[20], 0x99);
+        assert_eq!(preserving[4], 0xff);
+        assert_eq!(&preserving[14..16], &[0xaa, 0x55]);
     }
 
     #[test]
